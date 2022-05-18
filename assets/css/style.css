@@ -1,0 +1,66 @@
+*{
+    color: #161616;
+}
+
+nav{
+    background-color: #0046be;
+    padding: 8px 0;
+}
+
+nav img{
+    padding-top: 10px;
+    width: 115px;
+}
+
+main{
+    max-width: 900px;
+    margin: 50px auto;
+}
+
+main section .items{
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+main section .items .item{
+    margin-bottom: 10px;
+    padding-right: 0;
+}
+
+main section .items .item .option,
+button.btn{
+    color: #0046be;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #0046be;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+}
+
+main section .items .item .option:active,
+.active-item{
+    background-color: #0046be;
+    color: #fff !important;
+}
+
+button.btn{
+    background-color: #0046be;
+    color: #fff;
+    padding: 10px 40px;
+}
+
+button.btn:hover{
+    color: #fff;
+}

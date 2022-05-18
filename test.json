@@ -1,0 +1,225 @@
+[
+    {
+        "name" : "iphone 12 pro max",
+        "network" : [
+            {
+                "name" : "AT&T",
+                "capacity" : [
+                    {
+                        "name" : "128GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "256GB",
+                        "color" : [
+                            "Gold",
+                            "Silver", 
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "512GB",
+                        "color" : [
+                            "Gold", 
+                            "Silver", 
+                            "Pacific Blue", 
+                            "Graphite"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name" : "Verizon Wireless",
+                "capacity" : [
+                    {
+                        "name" : "128GB",
+                        "color" : [
+                            "Gold",
+                            "Silver", 
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "256GB",
+                        "color" : [
+                            "Gold", 
+                            "Silver",
+                            "Pacific Blue", 
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "512GB",
+                        "color" : [
+                            "Gold", 
+                            "Silver", 
+                            "Pacific Blue", 
+                            "Graphite"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name" : "sprint",
+                "capacity" : [
+                    {
+                        "name" : "128GB",
+                        "color" : [ 
+                            "Gold", 
+                            "Silver", 
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "256GB",
+                        "color" : [ 
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "512GB",
+                        "color" : [ 
+                            "Gold", 
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name" : "iPhone 12 Pro",
+        "network" : [
+            {
+                "name" : "AT&T",
+                "capacity" : [
+                    {
+                        "name" : "128GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "256GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "512GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name" : "Verizon Wireless",
+                "capacity" : [
+                    {
+                        "name" : "128GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "256GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "512GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name" : "sprint",
+                "capacity" : [
+                    {
+                        "name" : "128GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "256GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "512GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name" : "T-mobile",
+                "capacity" : [
+                    {
+                        "name" : "128GB",
+                        "color" : [
+                            "Gold",
+                            "Silver",
+                            "Pacific Blue",
+                            "Graphite"
+                        ]
+                    },
+                    {
+                        "name" : "256GB",
+                        "color" : [
+                            "Gold",
+                            "Silver"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
