@@ -1,79 +1,11 @@
-let phones = [
-    'iPhone 12 Pro Max',
-    'iPhone 12 Pro',
-    'iPhone 12',
-    'iPhone 12 mini',
-    'iPhone 11 Pro Max',
-    'iPhone 11 Pro',
-    'iPhone 11',
-    'iPhone XS Max',
-    'iPhone XS',
-    'iPhone XR',
-    'iPhone X',
-    'iPhone 8 Plus',
-    'iPhone 8',
-    'iPhone 7 Plus',
-    'iPhone 7',
-    'iPhone SE 2020',
-    'iPhone SE',
-    'iPhone 6s Plus',
-    'iPhone 6s',
-    'iPhone 6 Plus',
-    'iPhone 6'
-];
-
-let networks = [
-    'AT&T',
-    'Verizon Wireless',
-    'sprint',
-    'T-mobile',
-    'Unlocked',
-    'Verizon',
-    'other'
-];
-
-let capacities = [
-    '16GB',
-    '32GB',
-    '64GB',
-    '128GB',
-    '256GB',
-    '512GB'
-];
-
-let colors = [
-    'Gold',
-    'Silver',
-    'Pacific Blue',
-    'Graphite',
-    'Black',
-    'Red',
-    'White',
-    'Blue',
-    'Green',
-    'Space Gray',
-    'Midnight Green',
-    'Yellow',
-    'Purple',
-    'Coral',
-    'Product Red',
-    'Jet Black',
-    'Rose Gold'
-];
-
 const state = {
-    phone : "",
-    network : "",
-    capacity : "",
-    color : "",
+    initialPhone: {},
+    phone: "",
+    network: "",
+    capacity: "",
+    color: "",
 };
 
-const initialState = {
-    phone: {},
-    networks: [],
-    capacities: [],
-    colors: [],
-};
 
 const phones_dom = document.getElementById('phones');
 const networks_dom = document.getElementById('networks');
@@ -105,170 +37,265 @@ function onClickPhone(phones) {
 
     phone_items_dom.forEach(item => {
         item.addEventListener('click', ({ target }) => {
-            target.classList.add('active-item');
+            toggleActiveClass(phone_items_dom , item);
             phones.filter(phone => {
                 if (phone.name == target.innerText) {
                     state.phone = phone.name;
-                    initialState.phone = phone;
-                    initialState.networks = [];
-                    phone.network.forEach(network => {
-                        if (!initialState.networks.includes(network.name))
-                            initialState.networks.push(network.name);
-                    })
+                    state.initialPhone = phone;
 
-
-                    fillNetworksData(phone);
+                    fillNetworksData();
                 }
             })
-            console.log(initialState);
+            if(state.network != '') {
+                fillCapacitiesData();
+                console.log('capacity');
+            }
+            if (state.network != '' && state.capacity != '') {
+                fillColorsData();
+            }
+            checkStateData();
+            // console.log('onClickPhone', state);
         })
     })
 }
 
-function fillNetworksData(phone) {
+function fillNetworksData() {
     let items = '';
-    let networks = phone.network;
-    initialState.networks.forEach(network => {
-        if (network == state.network) {
+    let networks = state.initialPhone.networks;
+
+    networks.forEach(network => {
+        if (network.name == state.network) {
             items += `
-                <div class="col-md-3 item network">
-                    <div class="option active-item"> ${network} </div> 
+                <div div class = "col-md-3 item network active-item">
+                    <div class="option"> ${network.name} </div> 
                 </div>
             `
         } else {
             items += `
                 <div class="col-md-3 item network">
-                    <div class="option"> ${network} </div> 
+                    <div class="option"> ${network.name} </div> 
                 </div>
             `
         }
     });
     networks_dom.innerHTML = items;
-    onClickNetwork(networks);
+    onClickNetwork();
 }
 
-function onClickNetwork(networks) {
+function onClickNetwork() {
     const network_items_dom = document.querySelectorAll('.network');
+    let networks = state.initialPhone.networks;
+
     network_items_dom.forEach(item => {
         item.addEventListener('click', ({ target }) => {
-            target.classList.add('active-item');
+            toggleActiveClass(network_items_dom, item);
             networks.filter(network => {
                 if (network.name == target.innerText) {
+                    // console.log(network.name , target.innerText);
                     state.network = network.name;
 
-                    initialState.capacities = [];
-                    network.capacity.forEach(capacity => {
-                        if (!initialState.capacities.includes(capacity.name))
-                            initialState.capacities.push(capacity.name);
-                    })
-
-                    fillCapacitiesData(network);
+                    fillCapacitiesData();
                 }
             })
-            console.log(initialState);
+            if (state.capacity != '') {
+                fillColorsData();
+            }
+            checkStateData();
+            // console.log('onClickNetwork' , state);
         })
     })
 }
 
-function fillCapacitiesData(network) {
+function fillCapacitiesData() {
+    let networks = state.initialPhone.networks;
+    let capacities;
     let items = '';
-    let capacities = network.capacity;
-    initialState.capacities.forEach(capacity => {
-        if (capacity == state.capacity) {
-            items += `
-                <div div class = "col-md-3 item capacity" >
-                    <div class="option active-item"> ${capacity} </div> 
-                </div>
-            `
-        } else {
-            items += `
-                <div div class = "col-md-3 item capacity" >
-                    <div class="option"> ${capacity} </div> 
-                </div>
-            `
+    networks.filter(network => {
+        if (network.name == state.network) {
+            capacities = network.capacities;
         }
-    });
+    })
+
+    if (capacities != null) {
+        capacities.forEach(capacity => {
+            if (capacity.name == state.capacity) {
+                items += `
+                    <div div class = "col-md-3 item capacity active-item">
+                        <div class="option active-item"> ${capacity.name} </div> 
+                    </div>
+                `
+            } else {
+                items += `
+                    <div class = "col-md-3 item capacity">
+                        <div class="option"> ${capacity.name} </div> 
+                    </div>
+                `
+            }
+        });
+    }
     capacities_dom.innerHTML = items;
-    onClickCapacity(capacities);
-    
+    onClickCapacity();
 }
 
-function onClickCapacity(capacities) {
+function onClickCapacity() {
     const capacity_items_dom = document.querySelectorAll('.capacity');
+    
+    let networks = state.initialPhone.networks;
+    let capacities;
+    networks.filter(network => {
+        if (network.name == state.network) {
+            capacities = network.capacities;
+        }
+    })
+
     capacity_items_dom.forEach(item => {
         item.addEventListener('click', ({ target }) => {
-            target.classList.add('active-item');
+            toggleActiveClass(capacity_items_dom, item);
             capacities.filter(capacity => {
                 if (capacity.name == target.innerText) {
                     state.capacity = capacity.name;
 
-                    initialState.colors = [];
-                    capacity.color.forEach(color => {
-                        if (!initialState.colors.includes(color))
-                            initialState.colors.push(color);
-                    })
-
-
-                    fillColorsData(capacity);
+                    fillColorsData();
                 }
             })
-            console.log(initialState);
+            checkStateData();
+            // console.log('onClickCapacity' , state);
         })
     })
 }
 
-function fillColorsData(capacity) {
+function fillColorsData() {
+    let networks = state.initialPhone.networks;
+    let capacities;
+    let colors;
     let items = '';
-    let colors = capacity.color;
-    initialState.colors.forEach(color => {
-        if (color == state.color) {
-            items += `
-                <div class="col-md-3 item color">
-                    <div class="option active-item"> ${color} </div> 
-                </div>
-            `
-        } else {
-            items += `
-                <div class="col-md-3 item color">
-                    <div class="option"> ${color} </div> 
-                </div>
-            `
+    networks.filter(network => {
+        if (network.name == state.network) {
+            capacities = network.capacities;
+            capacities.filter(capacity => {
+                if (capacity.name == state.capacity) {
+                    colors = capacity.colors;
+                }
+            })
         }
-    });
+    })
+
+    if (colors != null) {
+        colors.forEach(color => {
+            if (color.name == state.color) {
+                items += `
+                    <div div class = "col-md-3 item color active-item">
+                        <div class="option"> ${color.name} </div> 
+                    </div>
+                `
+            } else {
+                items += `
+                    <div class = "col-md-3 item color">
+                        <div class="option"> ${color.name} </div> 
+                    </div>
+                `
+            }
+        });
+    }
     colors_dom.innerHTML = items;
     onClickColor();
 }
 
 function onClickColor() {
     const color_items_dom = document.querySelectorAll('.color');
+
+    let networks = state.initialPhone.networks;
+    let capacities;
+    let colors;
+    networks.filter(network => {
+        if (network.name == state.network) {
+            capacities = network.capacities;
+            capacities.filter(capacity => {
+                if (capacity.name == state.capacity) {
+                    colors = capacity.colors;
+                }
+            })
+        }
+    })
+
     color_items_dom.forEach(item => {
         item.addEventListener('click', ({ target }) => {
-            target.classList.add('active-item');
-            state.color = target.innerText
-            console.log(initialState);
-            console.log(state);
-            if (state.color != "")
-                button_dom.removeAttribute('disabled')
+            toggleActiveClass(color_items_dom, item);
+            colors.filter(color => {
+                if (color.name == target.innerText) {
+                    state.color = color.name;
+                }
+            })
+            checkStateData();
+            console.log('onClickColor' , state);
         })
     })
 }
 
+function checkStateData() {
+    console.log(state);
+    
+    let networks = state.initialPhone.networks;
+
+    let isNetwork = false;
+    networks.forEach(network => {
+        if (network.name == state.network) {
+            isNetwork = true;
+        }
+    })
+
+    if (isNetwork) {
+        let capacities;
+        networks.filter(network => {
+            if (network.name == state.network) {
+                capacities = network.capacities;
+            }
+        })
+
+        let isCapacity = false;
+        capacities.forEach(capacity => {
+            if (capacity.name == state.capacity) {
+                isCapacity = true;
+            }
+        })
+        if (isCapacity) {
+            let colors;
+            capacities.filter(capacity => {
+                if (capacity.name == state.capacity) {
+                    colors = capacity.colors;
+                }
+            })
+
+            let isColor = false;
+            colors.forEach(color => {
+                if (color.name == state.color) {
+                    isColor = true;
+                }
+            })
+            if (!isColor) {
+                state.color = '';
+            }
+        } else {
+            state.capacity = '';
+        }
+
+    } else {
+        state.network = '';
+    }
 
 
-function fillData(obj, key) {
-    console.log(obj, key);
-    let options = Object.values(obj).filter((value) => {
-        if (Array.isArray(value))
-            return value;
+    if (state.phone != '' && state.network != '' && state.capacity != '' && state.color != '') {
+        button_dom.removeAttribute('disabled');
+    } else {
+        button_dom.setAttribute('disabled', 'disabled');
+    }
+    
+}
+
+function toggleActiveClass(domHtml,item) {
+    domHtml.forEach(item => {
+        item.classList.remove('active-item');
     });
 
-    let items = '';
-    options[0].forEach(option => {
-        items += `
-            <div class="col-md-3 item network">
-                <div class="option"> ${option.name} </div> 
-            </div>
-        `
-    });
-    networks_dom.innerHTML = items;
+    item.classList.add('active-item');
 }

@@ -26,6 +26,11 @@ main section .items{
 main section .items .item{
     margin-bottom: 10px;
     padding-right: 0;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 main section .items .item .option,
@@ -49,10 +54,14 @@ button.btn{
     -o-transition: all 0.3s;
 }
 
-main section .items .item .option:active,
-.active-item{
+/* main section .items .item .option:active{
     background-color: #0046be;
     color: #fff !important;
+} */
+
+main section .items .item.active-item .option{
+    background-color: #0046be;
+    color: #fff;
 }
 
 button.btn{
