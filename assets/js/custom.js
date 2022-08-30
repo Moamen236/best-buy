@@ -11,7 +11,7 @@ const phones_dom = document.getElementById('phones');
 const networks_dom = document.getElementById('networks');
 const capacities_dom = document.getElementById('capacities');
 const colors_dom = document.getElementById('colors');
-const button_dom = document.getElementById('end');
+const button_dom = document.getElementById('continue');
 
 $.getJSON("test.json", function (phones) {
     // console.log(phones);
@@ -299,3 +299,15 @@ function toggleActiveClass(domHtml,item) {
 
     item.classList.add('active-item');
 }
+
+button_dom.addEventListener('click', () => {
+    console.log(state);
+    let product = {
+        phone: state.phone,
+        network: state.network,
+        capacity: state.capacity,
+        color: state.color
+    }
+    localStorage.setItem('product', JSON.stringify(product));
+    window.location.href = './show.html';
+});

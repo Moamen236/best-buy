@@ -2,6 +2,10 @@
     color: #161616;
 }
 
+p{
+    font-size: 14px;
+}
+
 nav{
     background-color: #0046be;
     padding: 8px 0;

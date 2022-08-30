@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Best Sale</title>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="logo">
+                        <a href="/index.html"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h2 class="head">Trade-In</h2>
+        <section class="mt-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-3 p-4">
+                        <div class="row g-0">
+                            <div class="col-md-2">
+                                <img id="trade_product_image" src="assets/images/icon.png" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-10">
+                                <div class="card-body py-0">
+                                    <h5 class="card-title">Your Trade-In Product</h5>
+                                    <hr class="mt-0">
+                                    <div id="trade_product_info">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="test.js"></script>
+    <script>
+        const trade_product_info = document.getElementById('trade_product_info');
+        let product = JSON.parse(localStorage.getItem('product'));
+        console.log(product);
+        trade_product_info.innerHTML = `
+            <p class="fw-bold mb-0">${product.phone} ${product.capacity} - ${product.color}</p>
+            <p class="card-text mb-0">Network : ${product.network}</p>
+        `;
+    </script>
+</body>
+</html>
